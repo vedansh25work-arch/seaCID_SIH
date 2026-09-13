@@ -16,7 +16,7 @@ router = APIRouter(
     status_code=201,
 )
 def submit_spectral_result(
-    incident_id: str,
+    incident_id: int,
     data: SpectralResultCreate,
 ):
     incident = memory_store.get_incident(incident_id)

@@ -15,7 +15,7 @@ router = APIRouter(
 
 @router.post("/{incident_id}/run-ml-analysis")
 async def run_ml_analysis(
-    incident_id: str,
+    incident_id: int,
     image: UploadFile = File(...),
 ):
     # Check that the incident exists
@@ -80,7 +80,7 @@ async def run_ml_analysis(
     "/{incident_id}/ml-result",
     response_model=MLAnalysisResult,
 )
-def get_ml_result(incident_id: str):
+def get_ml_result(incident_id: int):
     result = ml_result_store.get_result(incident_id)
 
     if result is None:

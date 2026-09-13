@@ -15,7 +15,7 @@ router = APIRouter(
     "/{incident_id}/evidence",
     response_model=list[VesselEvidence],
 )
-def get_fused_evidence(incident_id: str):
+def get_fused_evidence(incident_id: int):
 
     incident = memory_store.get_incident(incident_id)
 

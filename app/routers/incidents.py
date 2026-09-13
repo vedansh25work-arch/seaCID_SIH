@@ -17,7 +17,7 @@ def list_incidents():
 
 
 @router.get("/{incident_id}", response_model=SpillIncident)
-def get_incident(incident_id: str):
+def get_incident(incident_id: int):
     incident = memory_store.get_incident(incident_id)
 
     if incident is None:

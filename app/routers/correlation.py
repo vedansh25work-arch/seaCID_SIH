@@ -12,7 +12,7 @@ router = APIRouter(prefix="/incidents", tags=["Correlation"])
     "/{incident_id}/candidates",
     response_model=list[VesselCorrelation],
 )
-def get_candidate_vessels(incident_id: str):
+def get_candidate_vessels(incident_id: int):
     incident = memory_store.get_incident(incident_id)
 
     if incident is None:

@@ -7,7 +7,7 @@ router = APIRouter(prefix="/incidents", tags=["Cargo Compatibility"])
 
 
 @router.post("/{incident_id}/cargo-score", response_model=CargoScore, status_code=201)
-def submit_cargo_score(incident_id: str, data: CargoScoreCreate):
+def submit_cargo_score(incident_id: int, data: CargoScoreCreate):
     incident = memory_store.get_incident(incident_id)
     if incident is None:
         raise HTTPException(status_code=404, detail="Incident not found")
@@ -15,7 +15,7 @@ def submit_cargo_score(incident_id: str, data: CargoScoreCreate):
 
 
 @router.get("/{incident_id}/cargo-score/{mmsi}", response_model=CargoScore)
-def get_cargo_score(incident_id: str, mmsi: str):
+def get_cargo_score(incident_id: int, mmsi: str):
     score = cargo_store.get_cargo_score(incident_id, mmsi)
     if score is None:
         raise HTTPException(status_code=404, detail="No cargo score submitted for this vessel/incident")
